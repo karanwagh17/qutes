@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background-color: black;
+            color: yellowgreen;
+            /* */
+        }
+        .main{
+            position: absolute;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 50%;
+            font-size: 120px; 
+        }
+        #display
+        {
+            font-size: 30px;
+            position: relative;
+            top: 140px;
+          left: 220px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="display"></div>
+
+    <div class="main">
+        <span id="hrs">00</span>
+        <span>:</span>
+        <span id="min">00</span>
+        <span>:</span>
+        <span id="sec">00</span>
+    </div>
+
+    <script>
+        let hours = document.getElementById('hrs');
+        let minutes = document.getElementById('min');
+        let seconds = document.getElementById('sec');
+
+       
+        setInterval(() =>{
+        let currentTime = new Date();
+        // hours = currentTime.getHours();
+        // document.getElementById('hrs').innerHTML = hours;
+        // minutes = currentTime.getMinutes();
+        // document.getElementById('min').innerHTML = minutes;
+        // seconds = currentTime.getSeconds();
+        // document.getElementById('sec').innerHTML = seconds;
+
+
+        hours.innerHTML =(currentTime.getHours()<10?"0":"")+currentTime.getHours();
+        minutes.innerHTML =(currentTime.getMinutes()<10?"0":"")+currentTime.getMinutes();
+        seconds.innerHTML =(currentTime.getSeconds()<10?"0":"")+currentTime.getSeconds();
+
+        }, 1000);
+        let quotes = [
+            "A true friend never gets in your way unless you happen to be going down.",
+            "A man's friendships are one of the best measures of his worth.",
+            "A real friend is one who walks in when the rest of the world walks out.",
+            "That was what a best friend did: hold up a mirror and show you your heart.",
+            "If you have one true friend you have more than your share."
+        ];
+
+        function newQutoes() {
+            let store = document.getElementById('display');
+            let randomIndex = Math.floor(Math.random() * quotes.length);
+            store.innerHTML = quotes[randomIndex];
+        }
+
+        setInterval(newQutoes, 1000);
+
+    </script>
+</body>
+</html>
